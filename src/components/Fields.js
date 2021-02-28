@@ -1,10 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import {partialUpdateField} from "../http/fieldsApi";
 
 const Fields = (user) => {
 
     const  [elementList, setElementList] = useState( user.props )
 
     const [currentElement, setCurrentElement] = useState(null)
+
+    useEffect(() => {
+        setElementList(user.props)
+    }, [user.props])
 
     function dragStartHandler(e, element) {
         setCurrentElement(element)
@@ -16,10 +21,10 @@ const Fields = (user) => {
         e.preventDefault()
         // e.target.style.background = 'lightgray'
     }
-    function dragHandler(e, element) {
+    async function dragHandler(e, element) {
         e.preventDefault()
         console.log(element)
-        setElementList(elementList.map(el => {
+        const newElementList = elementList.map(el => {
             if (el.id === element.id) {
                 return {...el, order: currentElement.order}
             }
@@ -27,7 +32,15 @@ const Fields = (user) => {
                 return {...el, order: element.order}
             }
             return el
-        }))
+        })
+
+        newElementList.forEach((element, index) => {
+            if (element.order !== elementList[index].order)
+                partialUpdateField(element.id, {order: element.order})
+        }, [])
+
+        setElementList(newElementList)
+
         e.target.style.background = 'white'
     }
     const sortElement = (a,b) => {
@@ -35,7 +48,7 @@ const Fields = (user) => {
     }
     return (
         <div className="d-flex flex-column align-items-center">
-            {elementList.sort(sortElement).map(element =>
+            {elementList?.sort(sortElement).map(element =>
 
                 <div
                     onDragStart={(e) => dragStartHandler(e, element)}
