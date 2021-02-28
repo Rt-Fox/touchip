@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 
 import {useHistory} from "react-router-dom";
-import {login} from "../http/userAPI";
+import {getId, login} from "../http/userAPI";
 import {observer} from "mobx-react-lite";
 import {Context} from "../index";
 
@@ -13,12 +13,15 @@ const Login = observer(() => {
 
     const click = async () => {
         try {
-            let data = await login(email, password);
+            await login(email, password);
+            let id = await getId();
             user.setUser(user)
             user.setIsAuth(true)
-            history.push("/")
+            user.setId(id)
+            history.push(`/${user.id}`)
         } catch (e) {
-            alert(e.response.data.message)
+            console.error(e)
+            alert(e.response?.data?.message)
         }
 
     }
@@ -56,7 +59,7 @@ const Login = observer(() => {
                                 </div>
                             </div>
                             <div className="form-group">
-                                <button type="submit" className="btn btn-dark btn-block">Login</button>
+                                <button type="button" className="btn btn-dark btn-block" onClick={click}>Login</button>
                             </div>
                         </form>
                     </article>
