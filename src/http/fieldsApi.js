@@ -10,8 +10,8 @@ export const updateFields = async (id) => {
     const {data} = await $authHost.put('api/fields/' + id)
     return data
 }
-export const partialUpdateFields = async (id) => {
-    const {data} = await $authHost.patch('api/fields/' + id)
+export const partialUpdateField = async (id, body) => {
+    const {data} = await $authHost.patch('api/fields/' + id, body)
     return data
 }
 
@@ -28,3 +28,4 @@ export const partialUpdateCard  = async (id) => {
     const {data} = await $authHost.patch('api/fields/' + id)
     return data
 }
+

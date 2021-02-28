@@ -22,12 +22,13 @@
     transform: translateY(-50%);
   }
 }
-.element-photo {
+.element-photo img {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   background-color: black;
   margin-bottom: 30px;
+  object-fit: cover;
 }
 h2 {
   input {
