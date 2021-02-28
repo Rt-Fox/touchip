@@ -1,0 +1,155 @@
+.instagram, .twitter, .vk, .telegram, .tiktok, .facebook,.youtube,.mail,.map, .web,.phone {
+  width: 100%;
+  padding: 10px 40px;
+  border-radius: 20px;
+  border: 1px solid black;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: black;
+  text-align: center;
+}
+.text {
+  width: 100%;
+  padding: 10px 0px;
+}
+.burger {
+  position: relative;
+  svg{
+    position: absolute;
+    right: -60px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+.element-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: black;
+  margin-bottom: 30px;
+}
+h2 {
+  input {
+    text-align: center;
+    border: 0;
+  }
+}
+.btn-primary {
+  background-color: #fff;
+  width: 100%;
+  padding: 10px 40px;
+  border-radius: 20px;
+  border: 1px solid black;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: black;
+  text-align: center;
+  height: 50px;
+  div {
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    &:before, &:after {
+      position: absolute;
+      left: 50%;
+      content: ' ';
+      height: 33px;
+      width: 2px;
+      background-color: #333;
+    }
+    &:before {
+      transform: rotate(90deg);
+    }
+    &:after {
+      transform: rotate(0deg);
+    }
+  }
+  &:hover {
+    background: transparent;
+  }
+}
+.line-1 {
+  cursor: default;
+  width: 100%;
+  height: 30px;
+  margin-bottom: 30px;
+  border-bottom: 2px dashed black;
+
+  svg{
+    top: 100%;
+    transform: translateY(-50%);
+  }
+}
+.line-2 {
+  cursor: default;
+  width: 100%;
+  height: 30px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid black;
+
+  svg{
+    top: 100%;
+    transform: translateY(-50%);
+  }
+}
+.line-3 {
+  cursor: default;
+  display: block;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    content: '\25C8';
+    color: black;
+    font-size: 30px;
+    background-color: white;
+    width: 10%;
+    text-align: center;
+    transform: translateX(-50%) translateY(-35%);
+    top: 50%;
+    left: 50%;
+  }
+  width: 100%;
+  height: 30px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid black;
+  svg{
+    top: 100%;
+    transform: translateY(-50%);
+  }
+}
+.line-4 {
+  cursor: default;
+  display: block;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    content: '\221E';
+    color: black;
+    font-size: 30px;
+    background-color: white;
+    width: 10%;
+    text-align: center;
+    transform: translateX(-50%) translateY(-35%);
+    top: 50%;
+    left: 50%;
+  }
+  width: 100%;
+  height: 30px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid black;
+
+  svg{
+    top: 100%;
+    transform: translateY(-50%);
+  }
+}
+.col-4 {
+  min-width: 400px;
+}
