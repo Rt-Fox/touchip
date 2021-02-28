@@ -6,8 +6,7 @@ import FieldsStore from "./store/FieldsStore";
 import CardsStore from "./store/CardsStore";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.scss'
-
+import './index.scss';
 
 export const Context = createContext(null)
 

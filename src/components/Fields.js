@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 
 const Fields = (user) => {
-    const  [elementList, setElementList] = useState( user.props.fields )
+
+    const  [elementList, setElementList] = useState( user.props )
 
     const [currentElement, setCurrentElement] = useState(null)
 
@@ -35,6 +36,7 @@ const Fields = (user) => {
     return (
         <div className="d-flex flex-column align-items-center">
             {elementList.sort(sortElement).map(element =>
+
                 <div
                     onDragStart={(e) => dragStartHandler(e, element)}
                     onDragLeave={(e) => dragEndHandler(e)}

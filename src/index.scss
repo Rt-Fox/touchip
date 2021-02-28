@@ -1,4 +1,4 @@
-.instagram, .twitter, .vk, .telegram, .tiktok, .facebook,.youtube,.mail,.map, .web,.phone {
+.instagram, .twitter, .vk, .telegram, .tiktok, .facebook,.youtube,.mail,.map, .web, .phone {
   width: 100%;
   padding: 10px 40px;
   border-radius: 20px;
@@ -68,9 +68,17 @@ h2 {
     &:after {
       transform: rotate(0deg);
     }
+
   }
   &:hover {
-    background: transparent;
+    div {
+      &:before {
+        background: white;
+      }
+      &:after {
+        background: white;
+      }
+    }
   }
 }
 .line-1 {
@@ -110,7 +118,7 @@ h2 {
     background-color: white;
     width: 10%;
     text-align: center;
-    transform: translateX(-50%) translateY(-35%);
+    transform: translateX(-50%) translateY(-10px);
     top: 50%;
     left: 50%;
   }
@@ -136,7 +144,7 @@ h2 {
     background-color: white;
     width: 10%;
     text-align: center;
-    transform: translateX(-50%) translateY(-35%);
+    transform: translateX(-50%) translateY(-10px);
     top: 50%;
     left: 50%;
   }
@@ -152,4 +160,28 @@ h2 {
 }
 .col-4 {
   min-width: 400px;
+}
+
+input {
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 5px;
+  border: 1px solid rgba(0,0,0,0.5);
+  border-radius: 10px;
+}
+.form-check-input {
+  position: static;
+  margin: 0;
+}
+.btn-secondary {
+  border-radius: 0;
+  flex-shrink: 0;
+  border: none;
+  width: max-content;
+}
+.btn-group:not(:first-child), .btn-group>.btn:not(:first-child) {
+  margin-left: 0;
+}
+.btn:focus {
+  box-shadow: none;
 }
