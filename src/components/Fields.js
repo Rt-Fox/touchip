@@ -49,7 +49,6 @@ const Fields = (user) => {
     return (
         <div className="d-flex flex-column align-items-center">
             {elementList?.sort(sortElement).map(element =>
-
                 <div
                     onDragStart={(e) => dragStartHandler(e, element)}
                     onDragLeave={(e) => dragEndHandler(e)}
@@ -67,7 +66,6 @@ const Fields = (user) => {
                         <rect y="60" width="100" height="10"></rect>
                     </svg>
                 </div>
-
             )}
         </div>
     );

@@ -1,6 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { makeAutoObservable, autorun, runInAction } from "mobx"
+import {createFields} from "../http/fieldsApi";
+
 
 const Modal = () => {
+
+    const click = async (e) => {
+        e.preventDefault();
+        const formData = {};
+        try {
+            for (const field in this.refs) {
+                formData[field] = this.refs[field].value;
+            }
+            await createFields(formData);
+        } catch (e) {
+            console.error(e)
+            alert(e.response?.data?.message)
+        }
+
+    }
+    function  handleSubmit(e) {
+        e.preventDefault()
+    }
+
     return (
         <div className="col-4">
             <button className="btn btn-primary" data-toggle="modal" data-target="#Modal"><div className='krest'></div></button>
@@ -29,52 +51,52 @@ const Modal = () => {
                                     <div id="collapseOne" className="collapse show" aria-labelledby="headingOne"
                                          data-parent="#accordion">
                                         <div className="card-body">
-                                            <form>
+                                            <form onSubmit={handleSubmit}>
                                                 <div className="btn-group btn-group-toggle d-flex flex-wrap" data-toggle="buttons">
                                                     <label className="btn btn-secondary active">
                                                         <input type="radio" name="options" id="instagram"
-                                                               autoComplete="off" checked />
+                                                               autoComplete="off" checked readOnly />
                                                         instagram
                                                     </label>
                                                     <label className="btn btn-secondary">
                                                         <input type="radio" name="options" id="twitter"
-                                                               autoComplete="off"/>
+                                                               autoComplete="off" readOnly/>
                                                         twitter
                                                     </label>
                                                     <label className="btn btn-secondary">
                                                         <input type="radio" name="options" id="vk"
-                                                               autoComplete="off"/>
+                                                               autoComplete="off" readOnly/>
                                                         vk
                                                     </label>
                                                     <label className="btn btn-secondary">
                                                         <input type="radio" name="options" id="telegram"
-                                                               autoComplete="off"/>
+                                                               autoComplete="off" readOnly/>
                                                         telegram
                                                     </label>
                                                     <label className="btn btn-secondary">
                                                         <input type="radio" name="options" id="tiktok"
-                                                               autoComplete="off"/>
+                                                               autoComplete="off" readOnly/>
                                                         tiktok
                                                     </label>
                                                     <label className="btn btn-secondary">
                                                         <input type="radio" name="options" id="facebook"
-                                                               autoComplete="off"/>
+                                                               autoComplete="off" readOnly/>
                                                         facebook
                                                     </label>
                                                     <label className="btn btn-secondary">
                                                         <input type="radio" name="options" id="youtube"
-                                                               autoComplete="off"/>
+                                                               autoComplete="off" readOnly/>
                                                         youtube
                                                     </label>
                                                     <label className="btn btn-secondary">
                                                         <input type="radio" name="options" id="email"
-                                                               autoComplete="off"/>
+                                                               autoComplete="off" readOnly/>
                                                         почта
                                                     </label>
 
                                                     <label className="btn btn-secondary">
                                                         <input type="radio" name="options" id="map"
-                                                               autoComplete="off"/>
+                                                             value="map"  autoComplete="off" readOnly/>
                                                         Элемент на карте
                                                     </label>
                                                 </div>
@@ -83,7 +105,7 @@ const Modal = () => {
                                                            className="col-12 col-form-label">Заголовок</label>
                                                     <div className="col-12">
                                                         <input type="text" className="form-control" id="inputText2"
-                                                               placeholder="Как будет отображаться в профиле?" />
+                                                               placeholder="Как будет отображаться в профиле?" readOnly />
                                                     </div>
                                                 </div>
                                                 <div className="form-group row">
@@ -91,7 +113,7 @@ const Modal = () => {
                                                            className="col-12 col-form-label">Ссылка</label>
                                                     <div className="col-12">
                                                         <input type="text" className="form-control"
-                                                               id="inputText3" placeholder="Введите никнейм в соцсети, email или ссылку"/>
+                                                               id="inputText3" placeholder="Введите никнейм в соцсети, email или ссылку" readOnly/>
                                                     </div>
                                                 </div>
                                                 <button className="btn btn-secondary" type="submit">Добавить</button>
@@ -118,27 +140,27 @@ const Modal = () => {
                                                         <div className="col-12">
                                                             <div className="form-check">
                                                                 <input className="form-check-input" type="radio"
-                                                                       name="gridRadios" id="line-1"
-                                                                       value="line-1" checked/>
-                                                                <label for="line-1" className="line-1"></label>
+                                                                       name="gridRadios" id="line1"
+                                                                       value="line-1" readOnly/>
+                                                                <label htmlFor="line1" className="line-1"> </label>
                                                             </div>
                                                             <div className="form-check">
                                                                 <input className="form-check-input" type="radio"
-                                                                       name="gridRadios" id="line-2"
-                                                                       value="line-2" checked/>
-                                                                <label for="line-2" className="line-2"></label>
+                                                                       name="gridRadios" id="line2"
+                                                                       value="line-2" readOnly/>
+                                                                <label htmlFor="line2" className="line-2"> </label>
                                                             </div>
                                                             <div className="form-check">
                                                                 <input className="form-check-input" type="radio"
-                                                                       name="gridRadios" id="line-3"
-                                                                       value="line-3" checked/>
-                                                                <label for="line-3" className="line-3"></label>
+                                                                       name="gridRadios" id="line3"
+                                                                       value="line-3" readOnly/>
+                                                                <label htmlFor="line3" className="line-3"> </label>
                                                             </div>
                                                             <div className="form-check">
                                                                 <input className="form-check-input" type="radio"
-                                                                       name="gridRadios" id="line-4"
-                                                                       value="line-4" checked/>
-                                                                <label for="line-4" className="line-4"></label>
+                                                                       name="gridRadios" id="line4"
+                                                                       value="line-4" readOnly/>
+                                                                <label htmlFor="line4" className="line-4"> </label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -166,7 +188,7 @@ const Modal = () => {
                                                        className="col-12 col-form-label">Заголовок</label>
                                                 <div className="col-12">
                                                     <input type="text" className="form-control" id="inputText2"
-                                                           placeholder="Как будет отображаться в профиле?" />
+                                                           placeholder="Как будет отображаться в профиле?" readOnly/>
                                                 </div>
                                             </div>
                                             <div className="form-group row">
@@ -174,7 +196,7 @@ const Modal = () => {
                                                        className="col-12 col-form-label">Номер телефона</label>
                                                 <div className="col-12">
                                                     <input type="text" className="form-control"
-                                                           id="inputText3" placeholder="Введите номер телефона"/>
+                                                           id="inputText3" placeholder="Введите номер телефона" readOnly/>
                                                 </div>
                                             </div>
                                             <button className="btn btn-secondary" type="submit">Добавить</button>
@@ -199,7 +221,7 @@ const Modal = () => {
                                                        className="col-12 col-form-label">Введите текст</label>
                                                 <div className="col-12">
                                                     <input type="text" className="form-control"
-                                                           id="inputText3" placeholder="Он будет отображаться у вас на странице"/>
+                                                           id="inputText3" placeholder="Он будет отображаться у вас на странице" readOnly/>
                                                 </div>
                                                 <button className="btn btn-secondary" type="submit">Добавить</button>
                                             </form>

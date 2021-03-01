@@ -8,7 +8,7 @@ export const login = async (username, password) => {
 }
 
 export const refresh = async () => {
-    const {data} = await $authHost.post('api/accounts/token/refresh', {refresh: JSON.parse(localStorage.getItem(`token`)).refresh})
+    const {data} = await $authHost.post('api/accounts/token/refresh', {refresh: JSON.parse(localStorage.getItem(`token`))?.refresh})
     $host.defaults.headers.Authorization = `Bearer ${data.access}`
     return data.token
 }

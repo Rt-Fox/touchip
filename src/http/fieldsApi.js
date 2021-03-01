@@ -1,8 +1,21 @@
 import {$authHost, $host} from "./index";
 
+export const retrieveCard = async (id) => {
+    const {data} = await $authHost.get('api/cards/' + id)
+    return data
+}
 
-export const createFields = async (type) => {
-    const {data} = await $authHost.post('api/fields', type)
+export const updateCard  = async (id, body) => {
+    const {data} = await $authHost.put('/api/cards/' + id, body)
+    return data
+}
+export const partialUpdateCard  = async (id, body) => {
+    const {data} = await $authHost.patch('/api/cards/' + id, body)
+    return data
+}
+
+export const createFields = async (body) => {
+    const {data} = await $authHost.post('api/fields', body)
     return data
 }
 
@@ -14,18 +27,3 @@ export const partialUpdateField = async (id, body) => {
     const {data} = await $authHost.patch('api/fields/' + id, body)
     return data
 }
-
-export const retrieveCard = async (id) => {
-    const {data} = await $authHost.get('api/cards/' + id)
-    return data
-}
-
-export const updateCard  = async (id) => {
-    const {data} = await $authHost.put('api/fields/' + id)
-    return data
-}
-export const partialUpdateCard  = async (id) => {
-    const {data} = await $authHost.patch('api/fields/' + id)
-    return data
-}
-
