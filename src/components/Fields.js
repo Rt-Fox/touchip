@@ -23,7 +23,6 @@ const Fields = (user) => {
     }
     async function dragHandler(e, element) {
         e.preventDefault()
-        console.log(element)
         const newElementList = elementList.map(el => {
             if (el.id === element.id) {
                 return {...el, order: currentElement.order}
@@ -50,6 +49,7 @@ const Fields = (user) => {
         <div className="d-flex flex-column align-items-center">
             {elementList?.sort(sortElement).map(element =>
                 <div
+                    key={element.order}
                     onDragStart={(e) => dragStartHandler(e, element)}
                     onDragLeave={(e) => dragEndHandler(e)}
                     onDragEnd={(e) => dragEndHandler(e)}
