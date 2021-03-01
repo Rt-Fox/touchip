@@ -9,6 +9,7 @@
   color: black;
   text-align: center;
 }
+
 .text {
   width: 100%;
   padding: 10px 0px;
@@ -29,6 +30,9 @@
   background-color: black;
   margin-bottom: 30px;
   object-fit: cover;
+}
+#uplodfile {
+  display: none;
 }
 h2 {
   input {
