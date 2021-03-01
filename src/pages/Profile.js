@@ -9,28 +9,31 @@ import {getId} from "../http/userAPI";
 const Profile = observer(() => {
     const [card, setCard] = useState({})
     const [element, setElement] = useState('btn btn-secondary submit')
-    const arr = [0, 'nickname']
-    const [name, setName] = useState(arr);
+    const [name, setName] = useState(card.displayed_name);
     const {id} = useParams()
+
     useEffect(() => {
         retrieveCard(id).then(data => setCard(data))
-    }, [])
+    }, [id])
+
+    useEffect(() => {
+        setName(card.displayed_name)
+    }, [card.displayed_name])
 
 
     function handleChange(event) {
-        setName({value: event.target.value});
-        if (card.owner !== event.target.value) {
+        setName(event.target.value);
+        if (card.displayed_name !== event.target.value) {
             setElement('btn btn-secondary submit visibility')
         } else {
             setElement('btn btn-secondary submit')
         }
     }
+
     async function handleSubmit() {
         let id = await getId();
-        console.log(id)
-        console.log(name.value)
-        console.log(partialUpdateCard(1, {owner: name.value}))
-        partialUpdateCard(1, {owner: name.value})
+        await partialUpdateCard(id, {displayed_name: name})
+        setElement('btn btn-secondary submit')
     }
 
 
@@ -43,10 +46,10 @@ const Profile = observer(() => {
                 <h2 className="Title">
                     <input
                         type="text"
-                        value={name[name.length - 1]}
+                        value={name}
                         onChange={handleChange}
                     />
-                    <button className={element} type="submit" onSubmit={handleSubmit()}>Ok</button>
+                    <button className={element} type="submit" onClick={handleSubmit}>Ok</button>
                 </h2>
                 <div className="col-4">
                     <Fields key={card.id} props={card.fields}/>

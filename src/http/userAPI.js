@@ -15,5 +15,5 @@ export const refresh = async () => {
 
 export const getId = async () => {
     const {data} = await $authHost.get('api/accounts/page-path')
-    return data.page_id
+    return data.page_path
 }

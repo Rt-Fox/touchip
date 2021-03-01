@@ -15,6 +15,7 @@ const Login = observer(() => {
         try {
             await login(email, password);
             let id = await getId();
+            console.log(id)
             user.setUser(user)
             user.setIsAuth(true)
             user.setId(id)
