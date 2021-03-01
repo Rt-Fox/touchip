@@ -29,3 +29,5 @@ const Profile = observer(() => {
         </div>
     );
 });
+
+export default Profile;
