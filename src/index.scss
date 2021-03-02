@@ -1,4 +1,4 @@
-.instagram, .twitter, .vk, .telegram, .tiktok, .facebook,.youtube,.mail,.map, .web, .phone {
+.instagram, .twitter, .vk, .telegram, .tiktok, .facebook,.youtube,.mail,.map, .web, .phone,.another {
   width: 100%;
   padding: 10px 40px;
   border-radius: 20px;
@@ -16,11 +16,34 @@
 }
 .burger {
   position: relative;
-  svg{
+
+  .burger_svg{
     position: absolute;
     right: -60px;
     top: 50%;
     transform: translateY(-50%);
+  }
+}
+.fix {
+  position: relative;
+
+  .fix_button {
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    left: -60px;
+    top: 50%;
+    background-color: white;
+    border: none;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .button_svg {
+      height: 100%;
+      width: 100%;
+    }
   }
 }
 .element-photo img {
@@ -74,6 +97,11 @@ h2 {
       transform: rotate(0deg);
     }
 
+  }
+  &.danger {
+    &:hover {
+      background-color: rgba(75, 1, 27, 0.54);
+    }
   }
   &:hover {
     div {

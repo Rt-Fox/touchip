@@ -20,11 +20,16 @@ export const createFields = async (body) => {
 }
 
 export const updateFields = async (id) => {
-    const {data} = await $authHost.put('api/fields/' + id)
+    const {data} = await $authHost.put('api/fields/' + id).catch(error => {
+        return alert('ошибка');
+    });
     return data
 }
 export const partialUpdateField = async (id, body) => {
     const {data} = await $authHost.patch('api/fields/' + id, body)
     return data
 }
-
+export const destroyFields = async (id) => {
+    await $authHost.delete('api/fields/' + id)
+    return null
+}

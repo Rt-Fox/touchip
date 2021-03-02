@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom'
 import {partialUpdateCard, retrieveCard} from "../http/fieldsApi";
 import Fields from "../components/Fields";
@@ -7,6 +7,8 @@ import Modal from "../components/modal";
 import {getId} from "../http/userAPI";
 import Nickname from "../components/Nickname";
 import Avatar from "../components/Avatar";
+import {Context} from "../index";
+import ImageUpload from "../components/ImageUpload";
 
 const Profile = observer(() => {
     const [card, setCard] = useState({})

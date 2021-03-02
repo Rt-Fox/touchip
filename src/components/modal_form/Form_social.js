@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {createFields} from "../../http/fieldsApi";
+import {createFields, retrieveCard} from "../../http/fieldsApi";
 
 
 const FormSocial = () => {
 
-    const [title, setTitle] = useState('');
+    const [title, setTitle] = useState('instagram');
     const [value, setValue] = useState('');
     const [link, setLink] = useState('');
-
 
     function handleRadio(event) {
         setTitle(event.target.children[0].id)
@@ -19,9 +18,8 @@ const FormSocial = () => {
         setLink(event.target.value)
     }
     async function handleSubmit() {
-        await createFields( {title: title, value: value, link: link})
+        const response = await createFields( {"title": title, "value": value, "link": link})
     }
-
     return (
         <div className="card">
             <div className="card-header" id="headingOne">
@@ -47,10 +45,6 @@ const FormSocial = () => {
                                 twitter
                             </label>
                             <label className="btn btn-secondary" onClick={handleRadio}>
-                                <input type="radio" name="options" id="vk" />
-                                vk
-                            </label>
-                            <label className="btn btn-secondary" onClick={handleRadio}>
                                 <input type="radio" name="options" id="telegram" />
                                 telegram
                             </label>
@@ -67,13 +61,12 @@ const FormSocial = () => {
                                 youtube
                             </label>
                             <label className="btn btn-secondary" onClick={handleRadio}>
-                                <input type="radio" name="options" id="email" />
-                                почта
+                                <input type="radio" name="options" id="vk" />
+                                vk
                             </label>
-
                             <label className="btn btn-secondary" onClick={handleRadio}>
-                                <input type="radio" name="options" id="map" />
-                                Элемент на карте
+                                <input type="radio" name="options" id="another" />
+                                другое
                             </label>
                         </div>
                         <div className="form-group row">
@@ -89,7 +82,7 @@ const FormSocial = () => {
                                    className="col-12 col-form-label">Ссылка</label>
                             <div className="col-12">
                                 <input type="text" className="form-control" onChange={handleLink}
-                                       id="inputText3" placeholder="Введите никнейм в соцсети, email или ссылку" />
+                                       id="inputText3" placeholder="Введите никнейм в соцсети или ссылку" />
                             </div>
                         </div>
                         <button className="btn btn-secondary" type="button" onClick={handleSubmit}>Добавить</button>

@@ -9,7 +9,7 @@ const FormText = () => {
         setValue(event.target.value)
     }
     async function handleSubmit() {
-        await createFields( {title: 'phone', value: value, link: null})
+        const response = await createFields( {"title": 'text', "value": value, "link": null})
     }
 
     return (

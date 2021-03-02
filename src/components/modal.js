@@ -5,6 +5,8 @@ import FormSocial from "./modal_form/Form_social";
 import FormSeparator from "./modal_form/Form_separator";
 import FormPhone from "./modal_form/Form_phone";
 import FormText from "./modal_form/Form_text";
+import FormMail from "./modal_form/Form_mail";
+import FormMap from "./modal_form/Form_map";
 
 
 const Modal = () => {
@@ -27,6 +29,8 @@ const Modal = () => {
                                 <FormSocial />
                                 <FormSeparator />
                                 <FormPhone />
+                                <FormMail />
+                                <FormMap/>
                                 <FormText />
                             </div>
                         </div>

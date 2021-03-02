@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {partialUpdateField} from "../http/fieldsApi";
+import {keys} from "mobx";
+import FormFix from "./Form_fix";
 
 const Fields = (user) => {
 
@@ -45,22 +47,24 @@ const Fields = (user) => {
     const sortElement = (a,b) => {
         return (a.order > b.order) ? 1: -1
     }
+
     return (
         <div className="d-flex flex-column align-items-center">
             {elementList?.sort(sortElement).map(element =>
                 <div
-                    key={element.order}
+                    key={element.id}
                     onDragStart={(e) => dragStartHandler(e, element)}
                     onDragLeave={(e) => dragEndHandler(e)}
                     onDragEnd={(e) => dragEndHandler(e)}
                     onDragOver={(e) => dragOverHandler(e)}
                     onDrop={(e) => dragHandler(e, element)}
-                    className={element.title + ' burger'}
+                    className={element.title + ' fix burger'}
                     draggable={true}
                 >
+                    <FormFix props={element}/>
 
-                    <a href={element.link}>{element.value}</a>
-                    <svg viewBox="0 0 100 80" width="30" height="30">
+                    <a href={element.link}>{element.id + ': ' + element.value}</a>
+                    <svg className="burger_svg" viewBox="0 0 100 80" width="30" height="30">
                         <rect width="100" height="10"></rect>
                         <rect y="30" width="100" height="10"></rect>
                         <rect y="60" width="100" height="10"></rect>
