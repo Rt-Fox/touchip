@@ -10,22 +10,35 @@ import Avatar from "../components/Avatar";
 import {Context} from "../index";
 
 const Profile = observer(() => {
-    const [card, setCard] = useState({})
-    const {id} = useParams()
+    const {user} = useContext(Context);
 
+    const [card, setCard] = useState({});
+
+    const {id} = useParams()
     useEffect(() => {
         retrieveCard(id).then(data => setCard(data))
     }, [id])
+    var isAuth = user.isAuth;
+    if (user.id === card.page_path) {
+        user.setIsAuth(true);
+        isAuth = user.isAuth;
+    } else {
+        user.setIsAuth(false);
+        isAuth = user.isAuth;
+    }
+
 
     return (
         <div className="container mt-5">
             <div className="row d-flex flex-column align-items-center">
                 <Avatar props={card} />
                 <Nickname props={card} />
-                <div className="col-4">
-                    <Fields key={card.id} props={card.fields}/>
-                </div>
-                <Modal />
+            </div>
+            <div className="row d-flex flex-column align-items-center">
+                <Fields key={card.id} props={card.fields}/>
+            </div>
+            <div className="row d-flex flex-column align-items-center mb-5">
+                {isAuth&&<Modal />}
             </div>
         </div>
     );

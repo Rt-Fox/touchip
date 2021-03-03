@@ -7,18 +7,15 @@ import {LOGIN_ROUTE} from "../utils/consts";
 import {getId, refresh} from "../http/userAPI";
 
 const AppRouter = observer(() => {
-    const {user} = useContext(Context)
-    const [loading, setLoading] = useState(true)
-    const history = useHistory()
-    let isAuth = true
+    const {user} = useContext(Context);
+    const [loading, setLoading] = useState(true);
+    const history = useHistory();
 
     useEffect(() => {
         refresh().then(data => {
-            user.setUser(true)
-            user.setIsAuth(true)
+            user.setUser(true);
             getId().then((id) => {
-                user.setId(id)
-                history.push(`/${user.id}`)
+                user.setId(id);
             });
         }).finally(() => setLoading(false))
     }, [])

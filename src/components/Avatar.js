@@ -5,7 +5,8 @@ import {Context} from "../index";
 import {useParams} from "react-router-dom";
 
 const Avatar = (card) => {
-
+    const {user} = useContext(Context);
+    var isAuth = user.isAuth;
     const [avatar, setAvatar] = useState(card.props.photo);
     const {id} = useParams();
 
@@ -29,12 +30,18 @@ const Avatar = (card) => {
     }
 
     return (
-        <div>
-            <form className="element-photo">
-                <img onClick={upFile} src={avatar} alt=""/>
-                <input type="file" id="uplodfile" onChange={onMainPhotoSelected}/>
-            </form>
-        </div>
+        isAuth?
+            <div>
+                <form className="element-photo">
+                    <img onClick={upFile} src={avatar} alt=""/>
+                    <input type="file" id="uplodfile" onChange={onMainPhotoSelected}/>
+                </form>
+            </div>
+        :
+            <div className="element-photo">
+                <img src={avatar} alt=""/>
+            </div>
+
 
     );
 };
