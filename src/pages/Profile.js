@@ -8,7 +8,6 @@ import {getId} from "../http/userAPI";
 import Nickname from "../components/Nickname";
 import Avatar from "../components/Avatar";
 import {Context} from "../index";
-import ImageUpload from "../components/ImageUpload";
 
 const Profile = observer(() => {
     const [card, setCard] = useState({})

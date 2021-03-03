@@ -1,57 +1,39 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState,useEffect} from 'react';
 import {getId} from "../http/userAPI";
-import {partialUpdateCard} from "../http/fieldsApi";
+import {partialUpdateCard, retrieveCard} from "../http/fieldsApi";
 import {Context} from "../index";
+import {useParams} from "react-router-dom";
 
 const Avatar = (card) => {
 
     const [avatar, setAvatar] = useState(card.props.photo);
+    const {id} = useParams();
 
-    const {user} = useContext(Context)
-    var isAuth = user.isAuth;
+    useEffect(() => {
+        setAvatar(card.props.photo)
+    }, [card.props.photo])
 
     async function upFile() {
         var input = document.getElementById("uplodfile");
-
-        var response = input.click();
-        console.log(input.value)
-        if (input.file) {
-            submitFile()
-        }
-
+        input.click();
     }
-    async function submitFile() {
-        var input = document.getElementById("uplodfile");
-        let id = await getId();
-        setAvatar(input.value)
-        await partialUpdateCard(id, {"photo": avatar});
 
-    }
-    function handleImageChange(e){
+    async function onMainPhotoSelected(e) {
         e.preventDefault();
-        let reader = new FileReader();
-        let file = e.target.files[0];
-
-        reader.onloadend = () => {
-            this.setState({
-                file: file,
-                imagePreviewUrl: reader.result
-            });
+        if (e.target.files.length) {
+            var formData = new FormData();
+            formData.append("photo", e.target.files[0]);
+            const response = await partialUpdateCard(id, formData);
+            window.location.reload();
         }
-
     }
 
     return (
         <div>
-            {
-                isAuth?
-                <form className="element-photo">
-                    <img onClick={upFile} src={avatar} alt=""/>
-                    <input type="file" id="uplodfile" onClick={(e)=>handleImageChange(e)}/>
-                </form>: <div className="element-photo">
-                            <img src={avatar} alt=""/>
-                        </div>
-            }
+            <form className="element-photo">
+                <img onClick={upFile} src={avatar} alt=""/>
+                <input type="file" id="uplodfile" onChange={onMainPhotoSelected}/>
+            </form>
         </div>
 
     );
