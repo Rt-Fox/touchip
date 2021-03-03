@@ -16,7 +16,7 @@ const Modal = () => {
             <button className="btn btn-primary" data-toggle="modal" data-target="#Modal"><div className='krest'></div></button>
             <div className="modal fade" id="Modal" tabIndex="-1" role="dialog"
                  aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="col-10 modal-dialog" role="document">
+                <div className="w-100 p-0 m-auto modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLabel">Выберите тип блока</h5>

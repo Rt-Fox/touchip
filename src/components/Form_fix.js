@@ -1,11 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import {getId} from "../http/userAPI";
 import {destroyFields, partialUpdateField} from "../http/fieldsApi";
-
+var flag = ''
 const FormFix = (element) => {
     const [value, setValue] = useState(element.props.value);
     const [link, setLink] = useState(element.props.link);
 
+
+    if (link.startsWith('tel:')) {
+        flag = 'tel:';
+    } else if(link.startsWith('mailto:')) {
+        flag = 'mailto:';
+    }
     function handleValue(event) {
         setValue(event.target.value);
     }
@@ -18,9 +24,10 @@ const FormFix = (element) => {
         return null
     }
     async function handleSubmit() {
-        const response = await partialUpdateField(element.props.id, {"value": value, "link": link})
+        console.log(flag, !flag)
+        const response = await partialUpdateField(element.props.id, {"value": value, "link": flag+link})
         var r = document.getElementById("close" + element.props.id).click();
-        window.location.reload();
+
     }
     async function delElement() {
         await destroyFields(element.props.id)
@@ -64,7 +71,7 @@ const FormFix = (element) => {
                             <input type="text" placeholder="Как будет отображаться в профиле" value={value}
                                    onChange={handleValue}/>}
                             {element.props.link &&
-                            <input type="text" placeholder="Введите ссылку" value={link} onChange={handleLink}/>}
+                            <input type="text" placeholder="Введите ссылку" value={link.replace(flag,'')} onChange={handleLink}/>}
                             <button type="button" onClick={delElement} className="btn btn-primary danger">Удалить элемент
                             </button>
                         </div>

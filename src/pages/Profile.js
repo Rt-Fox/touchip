@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom'
 import {partialUpdateCard, retrieveCard} from "../http/fieldsApi";
 import Fields from "../components/Fields";
 import {observer} from "mobx-react-lite";
-import Modal from "../components/modal";
+import Modal from "../components/Modal";
 import {getId} from "../http/userAPI";
 import Nickname from "../components/Nickname";
 import Avatar from "../components/Avatar";
