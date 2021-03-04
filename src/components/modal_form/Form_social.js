@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {createFields, retrieveCard} from "../../http/fieldsApi";
+import React, {useState} from 'react';
+import {createFields} from "../../http/fieldsApi";
 
 
 const FormSocial = () => {
@@ -18,7 +18,8 @@ const FormSocial = () => {
         setLink(event.target.value)
     }
     async function handleSubmit() {
-        const response = await createFields( {"title": title, "value": value, "link": link})
+        const response = await createFields( {"title": title, "value": value, "link": link});
+        window.location.reload();
     }
     return (
         <div className="card">

@@ -1,21 +1,20 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom'
-import {partialUpdateCard, retrieveCard} from "../http/fieldsApi";
-import Fields from "../components/Fields";
+import {retrieveCard} from "../http/fieldsApi";
+
 import {observer} from "mobx-react-lite";
 import Modal from "../components/Modal";
-import {getId} from "../http/userAPI";
 import Nickname from "../components/Nickname";
 import Avatar from "../components/Avatar";
 import {Context} from "../index";
-import Dnd from "../components/Dnd";
+import Fields from "../components/Fields";
+import NoWay from "./NoWay";
 
 const Profile = observer(() => {
     const {user} = useContext(Context);
 
-    const [card, setCard] = useState({});
-
-    const {id} = useParams()
+    const [card, setCard] = useState('');
+    const {id} = useParams();
     useEffect(() => {
         retrieveCard(id).then(data => setCard(data))
     }, [id])
@@ -27,23 +26,20 @@ const Profile = observer(() => {
         user.setIsAuth(false);
         isAuth = user.isAuth;
     }
-
-
     return (
-        <div className="container mt-5">
-            <div className="row d-flex flex-column align-items-center">
-                <Avatar props={card} />
-                <Nickname props={card} />
+        card?
+            <div className="container mt-5">
+                <div className="row d-flex flex-column align-items-center">
+                    <Avatar props={card} />
+                    <Nickname props={card} />
+                </div>
+                {card&&<Fields id={id} fields={card.fields}  isAuth={isAuth}/>}
+                <div className="row d-flex flex-column align-items-center mb-5">
+                    {isAuth&&<Modal />}
+                </div>
             </div>
-            <div className="row d-flex flex-column align-items-center">
-                <Fields key={card.id} props={card.fields}/>
-            </div>
-            <div className="row d-flex flex-column align-items-center mb-5">
-                {isAuth&&<Modal />}
-                <h1>ghjh</h1>
-            </div>
-            {/*<Dnd props={card.fields}/>*/}
-        </div>
+            :
+            <NoWay />
     );
 });
 

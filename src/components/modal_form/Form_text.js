@@ -9,7 +9,8 @@ const FormText = () => {
         setValue(event.target.value)
     }
     async function handleSubmit() {
-        const response = await createFields( {"title": 'text', "value": value, "link": ''})
+        const response = await createFields( {"title": 'text', "value": value, "link": ''});
+        window.location.reload();
     }
 
     return (

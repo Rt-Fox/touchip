@@ -14,7 +14,8 @@ const FormMail = () => {
         setLink('mailto:' + event.target.value)
     }
     async function handleSubmit() {
-        const response = await createFields( {"title": 'email', "value": value, "link": link})
+        const response = await createFields( {"title": 'email', "value": value, "link": link});
+        window.location.reload();
     }
     return (
         <div className="card">

@@ -1,6 +1,5 @@
 import React, {useContext, useState,useEffect} from 'react';
-import {getId} from "../http/userAPI";
-import {partialUpdateCard, retrieveCard} from "../http/fieldsApi";
+import {partialUpdateCard} from "../http/fieldsApi";
 import {Context} from "../index";
 import {useParams} from "react-router-dom";
 
@@ -24,7 +23,7 @@ const Avatar = (card) => {
         if (e.target.files.length) {
             var formData = new FormData();
             formData.append("photo", e.target.files[0]);
-            const response = await partialUpdateCard(id, formData);
+            await partialUpdateCard(id, formData);
             window.location.reload();
         }
     }
@@ -41,8 +40,6 @@ const Avatar = (card) => {
             <div className="element-photo">
                 <img src={avatar} alt=""/>
             </div>
-
-
     );
 };
 

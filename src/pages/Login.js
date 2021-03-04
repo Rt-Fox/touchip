@@ -13,25 +13,24 @@ const Login = observer(() => {
 
     const click = async () => {
         try {
-            await login(email, password);
+            await login(email, password)
             let id = await getId();
             user.setUser(user)
             user.setIsAuth(true)
             user.setId(id)
             history.push(`/${user.id}`)
         } catch (e) {
-            console.error(e)
-            alert(e.response?.data?.message)
+            alert('проверьте введенные данные')
         }
 
     }
 
     return (
-        <div className="row mt-4">
-            <div className="col-4 mx-auto">
+        <div className="min-vh-100 row mt-4 d-flex justify-content-center align-items-center">
+            <div className="col-10 col-sm-9 col-md-8 col-lg-5 col-xl-4 mx-auto">
                 <div className="card">
                     <article className="card-body">
-                        <h4 className="card-title text-center mb-4 mt-1">Log In</h4>
+                        <h4 className="card-title text-center mb-4 mt-1">Войдите</h4>
                         <form>
                             <div className="form-group">
                                 <div className="input-group">

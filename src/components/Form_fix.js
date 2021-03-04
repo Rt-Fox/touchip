@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {destroyFields, partialUpdateField} from "../http/fieldsApi";
 
 const FormFix = (element) => {
-    const [title, setTitle] = useState(element.props.title);
+    const [title] = useState(element.props.title);
     const [value, setValue] = useState(element.props.value);
     const [link, setLink] = useState(element.props.link);
 
@@ -24,20 +24,15 @@ const FormFix = (element) => {
     function handleLink(event) {
         setLink(event.target.value);
     }
-    async function fixFields(id) {
-        var fixForm = document.forms.fix;
-        var formData = new FormData(fixForm);
-        return null
-    }
     async function handleSubmit() {
         if(title==='phone') {
-            const response = await partialUpdateField(element.props.id, {"value": value, "link": 'tel:'+link.replace(flag,'')});
+            await partialUpdateField(element.props.id, {"value": value, "link": 'tel:'+link.replace(flag,'')});
         }else if(title==='email') {
-            const response = await partialUpdateField(element.props.id, {"value": value, "link": 'mailto:'+link.replace(flag,'')});
+            await partialUpdateField(element.props.id, {"value": value, "link": 'mailto:'+link.replace(flag,'')});
         } else {
-            const response = await partialUpdateField(element.props.id, {"value": value, "link": link});
+            await partialUpdateField(element.props.id, {"value": value, "link": link});
         }
-        var r = document.getElementById("close" + element.props.id).click();
+        window.location.reload();
 
     }
     async function delElement() {

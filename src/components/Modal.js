@@ -8,7 +8,6 @@ import FormText from "./modal_form/Form_text";
 import FormMail from "./modal_form/Form_mail";
 import FormMap from "./modal_form/Form_map";
 
-
 const Modal = () => {
 
     return (
