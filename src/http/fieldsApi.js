@@ -1,5 +1,4 @@
 import {$authHost, $host} from "./index";
-
 export const retrieveCard = async (id) => {
     const {data} = await $authHost.get('api/cards/' + id)
     return data

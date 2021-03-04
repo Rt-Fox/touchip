@@ -1,16 +1,22 @@
 import React, {useEffect, useState} from 'react';
-import {getId} from "../http/userAPI";
 import {destroyFields, partialUpdateField} from "../http/fieldsApi";
-var flag = ''
+
 const FormFix = (element) => {
+    const [title, setTitle] = useState(element.props.title);
     const [value, setValue] = useState(element.props.value);
     const [link, setLink] = useState(element.props.link);
 
+    useEffect(() => {
+        setLink(element.props.link)
+    }, [element.props.link])
+    useEffect(() => {
+        setValue(element.props.value)
+    }, [element.props.value])
 
     if (link.startsWith('tel:')) {
-        flag = 'tel:';
+        var flag = 'tel:';
     } else if(link.startsWith('mailto:')) {
-        flag = 'mailto:';
+        var flag = 'mailto:';
     }
     function handleValue(event) {
         setValue(event.target.value);
@@ -24,8 +30,13 @@ const FormFix = (element) => {
         return null
     }
     async function handleSubmit() {
-        console.log(flag, !flag)
-        const response = await partialUpdateField(element.props.id, {"value": value, "link": flag+link})
+        if(title==='phone') {
+            const response = await partialUpdateField(element.props.id, {"value": value, "link": 'tel:'+link.replace(flag,'')});
+        }else if(title==='email') {
+            const response = await partialUpdateField(element.props.id, {"value": value, "link": 'mailto:'+link.replace(flag,'')});
+        } else {
+            const response = await partialUpdateField(element.props.id, {"value": value, "link": link});
+        }
         var r = document.getElementById("close" + element.props.id).click();
 
     }

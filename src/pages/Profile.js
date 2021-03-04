@@ -8,6 +8,7 @@ import {getId} from "../http/userAPI";
 import Nickname from "../components/Nickname";
 import Avatar from "../components/Avatar";
 import {Context} from "../index";
+import Dnd from "../components/Dnd";
 
 const Profile = observer(() => {
     const {user} = useContext(Context);
@@ -39,7 +40,9 @@ const Profile = observer(() => {
             </div>
             <div className="row d-flex flex-column align-items-center mb-5">
                 {isAuth&&<Modal />}
+                <h1>ghjh</h1>
             </div>
+            {/*<Dnd props={card.fields}/>*/}
         </div>
     );
 });
