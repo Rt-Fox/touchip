@@ -1,4 +1,7 @@
-.instagram, .twitter, .vk, .telegram, .tiktok, .facebook,.youtube,.email,.map, .web, .phone,.another {
+html,body {
+  overflow-x: hidden;
+}
+.instagram, .twitter, .vk, .telegram, .tiktok, .facebook,.youtube,.email,.map, .web, .phone {
   padding: 10px 40px;
   border-radius: 20px;
   border: 1px solid black;
@@ -6,16 +9,138 @@
   margin-top: 20px;
   margin-bottom: 20px;
   color: black;
-  text-align: center;
 }
-
+.form-control {
+  font-size: 15px;
+}
+.instagram {
+  color: white;
+  border: #bf0662;
+  background-color: #bf0662;
+  div:first-child {
+    font-weight: bold;
+  }
+  &:hover {
+    color: #ded3d3;
+  }
+}
+.twitter {
+  color: white;
+  border: #1da1f2;
+  background-color: #1da1f2;
+  div:first-child {
+    font-weight: bold;
+  }
+  &:hover {
+    color: #ded3d3;
+  }
+}
+.vk {
+  color: white;
+  border: #2787f5;
+  background-color: #2787f5;
+  div:first-child {
+    font-weight: bold;
+  }
+  &:hover {
+    color: #ded3d3;
+  }
+}
+.telegram {
+  color: white;
+  border: #31a8e0;
+  background-color: #31a8e0;
+  div:first-child {
+    font-weight: bold;
+  }
+  &:hover {
+    color: #ded3d3;
+  }
+}
+.tiktok {
+  color: white;
+  border: black;
+  background-color: black;
+  div:first-child {
+    font-weight: bold;
+  }
+  &:hover {
+    color: #ded3d3;
+  }
+}
+.facebook {
+  color: white;
+  border: #4867aa;
+  background-color: #4867aa;
+  div:first-child {
+    font-weight: bold;
+  }
+  &:hover {
+    color: #ded3d3;
+  }
+}
+.youtube {
+  color: white;
+  border: red;
+  background-color: red;
+  div:first-child {
+    font-weight: bold;
+  }
+  &:hover {
+    color: #ded3d3;
+  }
+}
+.email {
+  color: white;
+  border: #5f2ed2;
+  background-color: #5f2ed2;
+  div:first-child {
+    font-weight: bold;
+  }
+  &:hover {
+    color: #ded3d3;
+  }
+}
+.map {
+  color: white;
+  border: #e3cc05;
+  background-color: #e3cc05;
+  div:first-child {
+    font-weight: bold;
+  }
+  &:hover {
+    color: #ded3d3;
+  }
+}
+.web {
+  color: white;
+  border: #e54c04;
+  background-color: #e54c04;
+  div:first-child {
+    font-weight: bold;
+  }
+  &:hover {
+    color: #ded3d3;
+  }
+}
+.phone {
+  color: white;
+  border: green;
+  background-color: green;
+  div:first-child {
+    font-weight: bold;
+  }
+  &:hover {
+    color: #ded3d3;
+  }
+}
 .text {
-  padding: 10px 0px;
+  padding: 10px 0;
   text-align: center;
   pointer-events: none;
   cursor: default;
   color: black;
-
+  font-size: 20px;
 }
 .burger {
   position: relative;
@@ -79,7 +204,6 @@ h2 {
   color: black;
   text-align: center;
   height: 50px;
-
   div {
     height: 100%;
     text-align: center;
@@ -127,7 +251,6 @@ h2 {
   height: 30px;
   margin-bottom: 30px;
   border-bottom: 2px dashed black;
-
   svg{
     top: 100%;
     transform: translateY(-50%);
@@ -151,8 +274,8 @@ h2 {
   pointer-events: none;
   display: block;
   position: relative;
-
   &:before {
+    z-index: 100;
     position: absolute;
     content: '\25C8';
     color: black;
@@ -179,7 +302,6 @@ h2 {
   pointer-events: none;
   display: block;
   position: relative;
-
   &:before {
     position: absolute;
     content: '\221E';

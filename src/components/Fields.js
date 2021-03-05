@@ -45,7 +45,7 @@ class Fields extends React.Component {
                 {this.state.isAuth?
                 <DragDropContext onDragEnd={this.onDragEnd}>
                     <Droppable droppableId="droppable">
-                        {(provided, snapshot) => (
+                        {(provided) => (
                             <div
                                 className=""
                                 {...provided.droppableProps}
@@ -53,7 +53,7 @@ class Fields extends React.Component {
                             >
                                 {this.state.fields?.map((element, index) => (
                                     <Draggable key={element.id} draggableId={element.id.toString()} index={index}>
-                                        {(provided, snapshot) => (
+                                        {(provided) => (
                                             <div
                                                 className={'fix burger row d-flex align-items-center justify-content-center'}
                                                 ref={provided.innerRef}
@@ -62,13 +62,25 @@ class Fields extends React.Component {
                                             >
                                                 <FormFix props={element}/>
                                                 <a href={element.link} className={element.title + " col-8 col-sm-7 col-lg-6"}>
-                                                    <div>{element.value}</div>
+                                                    <div>
+
+                                                    </div>
+                                                    {(element.title!=="text"&&element.title!=="line-4"&&element.title!=="line-3"&&element.title!=="line-2"&&element.title!=="line-1")?
+                                                        <div className='d-flex flex-column align-content-start justify-content-start'>
+                                                            <div>{element.title}</div>
+                                                            <div>{element.value}</div>
+                                                        </div>
+                                                        :
+                                                        <div className='d-flex flex-column align-content-start justify-content-start'>
+                                                            <div>{element.value}</div>
+                                                        </div>
+                                                    }
                                                 </a>
                                                 <div className="col-2 col-lg-1 d-flex justify-content-end">
-                                                    <svg className="burger_svg" viewBox="0 0 100 80" width="30" height="30">
-                                                        <rect width="100" height="10"></rect>
-                                                        <rect y="30" width="100" height="10"></rect>
-                                                        <rect y="60" width="100" height="10"></rect>
+                                                    <svg className="burger_svg" viewBox="0 0 100 80" width="21" height="21">
+                                                        <rect width="100" height="7"> </rect>
+                                                        <rect y="30" width="100" height="7"> </rect>
+                                                        <rect y="60" width="100" height="7"> </rect>
                                                     </svg>
                                                 </div>
                                             </div>

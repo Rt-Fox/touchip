@@ -54,20 +54,16 @@ const FormSocial = () => {
                                 tiktok
                             </label>
                             <label className="btn btn-secondary" onClick={handleRadio}>
+                                <input type="radio" name="options" id="vk" />
+                                vk
+                            </label>
+                            <label className="btn btn-secondary" onClick={handleRadio}>
                                 <input type="radio" name="options" id="facebook" />
                                 facebook
                             </label>
                             <label className="btn btn-secondary" onClick={handleRadio}>
                                 <input type="radio" name="options" id="youtube" />
                                 youtube
-                            </label>
-                            <label className="btn btn-secondary" onClick={handleRadio}>
-                                <input type="radio" name="options" id="vk" />
-                                vk
-                            </label>
-                            <label className="btn btn-secondary" onClick={handleRadio}>
-                                <input type="radio" name="options" id="another" />
-                                другое
                             </label>
                         </div>
                         <div className="form-group row">

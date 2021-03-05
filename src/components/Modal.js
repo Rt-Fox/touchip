@@ -10,10 +10,10 @@ const Modal = () => {
 
     return (
         <div className="col-10 col-sm-8 col-lg-6">
-            <button className="btn btn-primary" data-toggle="modal" data-target="#Modal"><div className='krest'></div></button>
-            <div className="modal fade" id="Modal" tabIndex="-1" role="dialog"
+            <button className="btn btn-primary" data-toggle="modal" data-target="#Modal"><div className='krest'> </div></button>
+            <div className="vw-100 mt-3 modal fade" id="Modal" tabIndex="-1" role="dialog"
                  aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="w-100 p-0 m-auto modal-dialog" role="document">
+                <div className="vw-100 p-0 m-auto modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLabel">Выберите тип блока</h5>

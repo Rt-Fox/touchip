@@ -26,7 +26,7 @@ const Login = observer(() => {
     }
 
     return (
-        <div className="min-vh-100 row mt-4 d-flex justify-content-center align-items-center">
+        <div className="vh-100 row mt-4 d-flex justify-content-center align-items-center">
             <div className="col-10 col-sm-9 col-md-8 col-lg-5 col-xl-4 mx-auto">
                 <div className="card">
                     <article className="card-body">

@@ -29,10 +29,10 @@ const FormText = () => {
                 <div className="card-body">
                     <form>
                         <label htmlFor="inputText3"
-                               className="col-12 col-form-label">Введите текст</label>
+                               className="col-12 col-form-label">Он будет отображаться у вас на странице</label>
                         <div className="col-12">
                             <input type="text" className="form-control"
-                                   id="inputText3" placeholder="Он будет отображаться у вас на странице" onChange={handleValue}/>
+                                   id="inputText3" placeholder="Введите текст" onChange={handleValue}/>
                         </div>
                         <button className="btn btn-secondary" type="button" onClick={handleSubmit}>Добавить</button>
                     </form>
