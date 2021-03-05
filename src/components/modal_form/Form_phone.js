@@ -14,7 +14,7 @@ const FormPhone = () => {
         setLink('tel:' + event.target.value)
     }
     async function handleSubmit() {
-        const response = await createFields( {"title": 'phone', "value": value, "link": link});
+        await createFields( {"title": 'phone', "value": value, "link": link});
         window.location.reload();
     }
 

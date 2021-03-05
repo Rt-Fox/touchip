@@ -18,7 +18,7 @@ const FormSocial = () => {
         setLink(event.target.value)
     }
     async function handleSubmit() {
-        const response = await createFields( {"title": title, "value": value, "link": link});
+        await createFields( {"title": title, "value": value, "link": link});
         window.location.reload();
     }
     return (

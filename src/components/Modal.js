@@ -1,6 +1,4 @@
-import React, {useState} from 'react';
-import { makeAutoObservable, autorun, runInAction } from "mobx"
-import {createFields} from "../http/fieldsApi";
+import React from 'react';
 import FormSocial from "./modal_form/Form_social";
 import FormSeparator from "./modal_form/Form_separator";
 import FormPhone from "./modal_form/Form_phone";

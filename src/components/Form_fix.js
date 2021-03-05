@@ -12,11 +12,11 @@ const FormFix = (element) => {
     useEffect(() => {
         setValue(element.props.value)
     }, [element.props.value])
-
+    var flag;
     if (link.startsWith('tel:')) {
-        var flag = 'tel:';
+        flag = 'tel:';
     } else if(link.startsWith('mailto:')) {
-        var flag = 'mailto:';
+        flag = 'mailto:';
     }
     function handleValue(event) {
         setValue(event.target.value);

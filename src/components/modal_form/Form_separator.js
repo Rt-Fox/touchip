@@ -9,7 +9,7 @@ const FormSeparator = () => {
         setTitle(event.target.value)
     }
     async function handleSubmit() {
-        const response = await createFields( {"title": title, "value": ' ', "link": ''});
+        await createFields( {"title": title, "value": ' ', "link": ''});
         window.location.reload();
     }
 

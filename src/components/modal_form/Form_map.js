@@ -14,7 +14,7 @@ const FormMap = () => {
         setLink(event.target.value)
     }
     async function handleSubmit() {
-        const response = await createFields( {"title": 'map', "value": value, "link": link});
+        await createFields( {"title": 'map', "value": value, "link": link});
         window.location.reload();
     }
     return (
