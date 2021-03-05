@@ -66,7 +66,7 @@ const FormFix = (element) => {
                 <div className="col-10 modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="fixModalLabel">Modal title</h5>
+                            <h5 className="modal-title" id="fixModalLabel">Редактирование</h5>
                             <button type="button" id={'close' + element.props.id} className="close" data-dismiss="modal"
                                     aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
