@@ -1,19 +1,19 @@
 import React from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import {partialUpdateField} from "../http/fieldsApi";
+import {partialUpdateField,retrieveCard} from "../http/fieldsApi";
 import FormFix from "./Form_fix";
 
-function reorder(id, list, startIndex, endIndex) {
-    console.log(list)
+async function rebase(id, list, startIndex, endIndex) {
+    await partialUpdateField(list[startIndex].id, {"order": endIndex});
+    await retrieveCard(id);
+}
+
+const reorder = (id, list, startIndex, endIndex) =>{
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
-    rebase(list, startIndex, endIndex)
+    rebase(id, list, startIndex, endIndex)
     return result;
-}
-async function rebase(list, startIndex, endIndex) {
-    var response = await partialUpdateField(list[startIndex].id, {"order": endIndex}).then();
-    return response;
 }
 class Fields extends React.Component {
     constructor(props) {
@@ -29,15 +29,14 @@ class Fields extends React.Component {
         if (!result.destination) {
             return;
         }
-        const fields = reorder(
+        const fields =  reorder(
             this.state.id,
             this.state.fields,
             result.source.index,
             result.destination.index
-        );
-        console.log(fields)
+        )
         this.setState({
-            fields
+            fields: fields
         });
     }
     render() {
@@ -53,7 +52,7 @@ class Fields extends React.Component {
                                 ref={provided.innerRef}
                             >
                                 {this.state.fields?.map((element, index) => (
-                                    <Draggable key={index} draggableId={index.toString()} index={element.order}>
+                                    <Draggable key={element.id} draggableId={element.id.toString()} index={index}>
                                         {(provided, snapshot) => (
                                             <div
                                                 className={'fix burger row d-flex align-items-center justify-content-center'}
