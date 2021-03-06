@@ -5,6 +5,7 @@ import UserStore from "./store/UserStore";
 import FieldsStore from "./store/FieldsStore";
 import CardsStore from "./store/CardsStore";
 
+import 'font-awesome/css/font-awesome.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.scss';
 

@@ -32,7 +32,7 @@ const Nickname = (card) => {
     }
     return (
         isAuth?
-        <h2 className="Title">
+        <h2 className="Title col-8 col-lg-7">
             <input
                 key={id}
                 type="text"
@@ -42,7 +42,7 @@ const Nickname = (card) => {
             <button className={element} type="submit" onClick={handleSubmit}>Ok</button>
         </h2>
         :
-        <h2 className="Title">{name || ''}</h2>
+        <h2 className="Title col-8 col-lg-7">{name || ''}</h2>
     );
 };
 

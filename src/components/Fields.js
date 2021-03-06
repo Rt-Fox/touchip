@@ -23,7 +23,15 @@ class Fields extends React.Component {
             fields: props.fields,
             isAuth: props.isAuth
         };
+
         this.onDragEnd = this.onDragEnd.bind(this);
+    }
+    componentWillReceiveProps(nextProps) {
+        if(this.props != nextProps) {
+            this.setState({
+                isAuth: nextProps.isAuth
+            });
+        }
     }
     onDragEnd(result) {
         if (!result.destination) {
@@ -40,6 +48,7 @@ class Fields extends React.Component {
         });
     }
     render() {
+        console.log(this.state.isAuth,'f re');
         return (
             <div>
                 {this.state.isAuth?
@@ -62,13 +71,20 @@ class Fields extends React.Component {
                                             >
                                                 <FormFix props={element}/>
                                                 <a href={element.link} className={element.title + " col-8 col-sm-7 col-lg-6"}>
-                                                    <div>
-
-                                                    </div>
                                                     {(element.title!=="text"&&element.title!=="line-4"&&element.title!=="line-3"&&element.title!=="line-2"&&element.title!=="line-1")?
-                                                        <div className='d-flex flex-column align-content-start justify-content-start'>
-                                                            <div>{element.title}</div>
-                                                            <div>{element.value}</div>
+                                                        <div className="d-flex align-content-center ">
+                                                            <div className='d-flex icons'>
+                                                                {(element.title==='email')?
+                                                                    <i className={'fa fa-envelope-o'}></i>
+                                                                    :
+                                                                (element.title==='tiktok')?
+                                                                    <img className={'tiktok-svg'} src="/tiktok.svg" alt=""/>
+                                                                    :
+                                                                <i className={'fa fa-'+element.title }></i>}
+                                                            </div>
+                                                            <div className='d-flex element-text flex-column justify-content-center'>
+                                                                <div>{element.value}</div>
+                                                            </div>
                                                         </div>
                                                         :
                                                         <div className='d-flex flex-column align-content-start justify-content-start'>
@@ -94,13 +110,31 @@ class Fields extends React.Component {
                 </DragDropContext>
                 :
                 this.state.fields?.map(element =>
-                    <div className="row d-flex align-items-center justify-content-center">
-                        <a href={element.link} className={element.title + " col-8 col-sm-7 col-lg-6"}>
-                            <div>{element.value}</div>
+                    <div key={element.id} className="row d-flex align-items-center justify-content-center">
+                        <a href={element.link} className={element.title + " col-9 col-sm-7 col-lg-6"}>
+                            {(element.title!=="text"&&element.title!=="line-4"&&element.title!=="line-3"&&element.title!=="line-2"&&element.title!=="line-1")?
+                                <div className="d-flex align-content-center">
+                                    <div className='d-flex icons'>
+                                        {(element.title==='email')?
+                                            <i className={'fa fa-envelope-o'}></i>
+                                            :
+                                            (element.title==='tiktok')?
+                                                <img className={'tiktok-svg'} src="/tiktok.svg" alt=""/>
+                                                :
+                                                <i className={'fa fa-'+element.title }></i>}
+                                    </div>
+                                    <div className='d-flex element-text flex-column justify-content-center'>
+                                        <div>{element.value}</div>
+                                    </div>
+                                </div>
+                                :
+                                <div className='d-flex flex-column align-content-start justify-content-start'>
+                                    <div>{element.value}</div>
+                                </div>
+                            }
                         </a>
                     </div>
                     )}
-
             </div>
         );
     }

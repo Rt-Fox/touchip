@@ -26,39 +26,44 @@ const Login = observer(() => {
     }
 
     return (
-        <div className="vh-100 row mt-4 d-flex justify-content-center align-items-center">
+        <div className="vh-100 bg-login row d-flex justify-content-center align-items-center">
+            <div className={"TOUCH-title"}>TOUCH.IP</div>
             <div className="col-10 col-sm-9 col-md-8 col-lg-5 col-xl-4 mx-auto">
                 <div className="card">
                     <article className="card-body">
-                        <h4 className="card-title text-center mb-4 mt-1">Войдите</h4>
+                        <h1 className="card-title text-center mt-1">ВХОД</h1>
                         <form>
                             <div className="form-group">
-                                <div className="input-group">
+                                <div>Логин</div>
+                                <div className="input-group input-login">
                                     <input
                                         className="form-control"
-                                        placeholder="Введите ваш email..."
+                                        placeholder="Введите логин..."
                                         name="email"
                                         value={email}
                                         onChange={e => setEmail(e.target.value)}
                                         required
                                     />
+                                    <i className="fa fa-user-circle-o"></i>
                                 </div>
                             </div>
                             <div className="form-group">
-                                <div className="input-group">
+                                <div>Пароль</div>
+                                <div className="input-group input-pas">
                                     <input
                                         className="form-control"
                                         type="password"
                                         name="password"
-                                        placeholder="Введите ваш пароль..."
+                                        placeholder="Введите пароль..."
                                         value={password}
                                         onChange={e => setPassword(e.target.value)}
                                         required
                                     />
+                                    <i className="fa fa-lock"></i>
                                 </div>
                             </div>
-                            <div className="form-group">
-                                <button type="button" className="btn btn-dark btn-block" onClick={click}>Login</button>
+                            <div className="form-group d-flex align-self-center justify-content-center">
+                                <button type="button" className="btn btn-danger btn-block" onClick={click}>Войти</button>
                             </div>
                         </form>
                     </article>
